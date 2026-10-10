@@ -6,7 +6,16 @@
 
 **699 Samples · 16 Subtasks · 3 Dimensions**
 
-[Paper](paper/plan-bench.pdf) · [Benchmark](#benchmark) · [Main Results](#main-results) · [Experimental Analysis](#experimental-analysis) · [Citation](#citation)
+<p align="center">
+  <a href="#">
+    <img src="https://img.shields.io/badge/📄_Paper-arXiv-B31B1B?style=for-the-badge" alt="Paper">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://huggingface.co/datasets/FJuntong/Plan-Bench">
+    <img src="https://img.shields.io/badge/🤗_Benchmark-Hugging_Face-FFD21E?style=for-the-badge" alt="Benchmark">
+  </a>
+</p>
+
 
 </div>
 
