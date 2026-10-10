@@ -1,7 +1,7 @@
 # Plan-Bench
 
 <p align="center">
-  <img src="assets/figures/motivation.jpg" width="980" alt="VISTA-Bench motivation">
+  <img src="assets/figures/motivation.jpg" width="980" alt="Plan-Bench motivation">
 </p>
 <p align="center">
   <strong>Do VLMs really understand visualized text as well as pure text?</strong><br/>
