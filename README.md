@@ -14,9 +14,11 @@
 
 ![Plan-Bench overview](assets/figures/overview.png)
 
-*Figure 1, paper p. 2.*
+<p align="center">
+  <em>Figure 1: Motivation of Plan-Bench</em>
+</p>
 
-**Plan-Bench** evaluates VLMs' high-level reasoning and multi-step planning for embodied tasks, independently of low-level action execution. It tests whether models can integrate spatial evidence, track evolving states, and generate plans under constraints.
+We introduce **Plan-Bench**, a systematic benchmark for evaluating the **high-level reasoning and multi-step planning capabilities of Vision-Language Models (VLMs)** in embodied worlds. By **decoupling high-level reasoning from low-level action execution**, Plan-Bench provides a lightweight and unified framework for assessing whether existing VLMs can go beyond visual perception to reason about spatial relationships, understand temporal dynamics, and plan multi-step actions under various constraints.
 
 ## Benchmark
 
@@ -28,36 +30,11 @@
 
 The dataset contains **183 single-choice** and **516 open-ended** questions, with **1–16 images per sample**. It combines controlled generation and existing datasets; 699 samples are retained from 2,580 candidates through independent review by three annotators.
 
-<details>
-<summary><strong>Task breakdown and dataset figures</strong></summary>
-
-| Dimension | Subtask | Single-choice | Open-ended |
-| :--- | :--- | ---: | ---: |
-| Spatial Cognition | Occlusion Order | 18 | 32 |
-| Spatial Cognition | Mirror Distinction | 0 | 35 |
-| Spatial Cognition | Action Recovery | 30 | 20 |
-| Spatial Cognition | Target Discovery | 40 | 0 |
-| Spatial Cognition | State Recognition | 20 | 20 |
-| Spatial Cognition | Spatial Relations | 0 | 44 |
-| Temporal Reasoning | Progress Tracking | 0 | 30 |
-| Temporal Reasoning | Temporal Ordering | 20 | 20 |
-| Temporal Reasoning | Persistent Counting | 0 | 50 |
-| Temporal Reasoning | Instruction Alignment | 15 | 25 |
-| Temporal Reasoning | Motion Retrieval | 0 | 50 |
-| Multi-Step Planning | Constraint Sequencing | 0 | 50 |
-| Multi-Step Planning | Capacity Planning | 30 | 0 |
-| Multi-Step Planning | Rearrangement Planning | 0 | 50 |
-| Multi-Step Planning | Dependency Planning | 0 | 50 |
-| Multi-Step Planning | Route Planning | 10 | 40 |
-| **Total** |  | **183** | **516** |
-
 ![Representative samples across all 16 subtasks](assets/figures/tasks.png)
 
-*Figure 3, paper p. 4; question counts from Table 2.*
-
-![Dataset construction pipeline](assets/figures/construction.png)
-
-*Figure 2, paper p. 3.*
+<p align="center">
+  <em>Figure 2: Representative samples of Plan-Bench</em>
+</p>
 
 </details>
 
@@ -67,14 +44,6 @@ VLMs receive images and a question, and return an option letter or a structured 
 
 Open-weight models are evaluated with **VLMEvalKit** on NVIDIA A800 GPUs in BF16; commercial models use API interfaces. Prompts and model configurations are provided in Appendix B.
 
-<details>
-<summary><strong>Answer-equivalence examples</strong></summary>
-
-![Examples of equivalent valid answers](assets/figures/answer-hints.png)
-
-*Figure 10, paper p. 20.*
-
-</details>
 
 <!-- Add tested installation, dataset access, and evaluation commands once release paths are verified. -->
 
@@ -154,22 +123,6 @@ Selected results from **Table 1** of the paper. Values are accuracy (%).
 
 Across ten models, Thinking brings average gains of **31.1 percentage points in Multi-Step Planning**, compared with 19.4 in Temporal Reasoning and 15.2 in Spatial Cognition. All ten improve overall accuracy, with longer inference time.
 
-<details>
-<summary><strong>Navigation, manipulation, and failure cases</strong></summary>
-
-![Navigation and manipulation task-group accuracy](assets/figures/navigation-manipulation.png)
-
-*Figure 6, paper p. 8.*
-
-Task-group strengths differ: Qwen3.8-27B achieves **69.3% on manipulation-related tasks versus 54.6% on navigation-related tasks**. These scores assess high-level decisions rather than robot execution.
-
-![Representative hallucination failures](assets/figures/hallucination-cases.png)
-
-*Figure 8, paper p. 9.*
-
-Qwen3.8-Max sometimes treats reflections as physical objects or merges distinct objects across views, producing incorrect removal plans and counts. Consistent object correspondence remains a challenge.
-
-</details>
 
 ## Citation
 
