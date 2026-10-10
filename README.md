@@ -103,7 +103,9 @@ Selected results from **Table 1** of the paper. Values are accuracy (%).
 
 ![Subtask accuracy of eight representative VLMs](assets/figures/subtask-performance.png)
 
-*Figure 4, paper p. 7.*
+<p align="center">
+  <em>Figure 3: Task-specific weaknesses</em>
+</p>
 
 **Overall accuracy can hide substantial weaknesses:** Qwen3.8-Max scores 75.0% overall but only **38.0% on Persistent Counting**; Kimi-K3 scores 70.2% overall but **10.0% on Rearrangement Planning**. Scaling generally helps within a model family, but task-specific performance remains important.
 
@@ -111,7 +113,9 @@ Selected results from **Table 1** of the paper. Values are accuracy (%).
 
 ![Accuracy with additional misleading viewpoints](assets/figures/misleading-views.png)
 
-*Figure 5, paper p. 8.*
+<p align="center">
+  <em>Figure 4: Robustness to misleading views</em>
+</p>
 
 **More views do not always help.** Adding four misleading views to one informative view reduces Spatial Relations accuracy from **90.9% to 68.2%** for Qwen3.8-27B, and from **93.2% to 22.7%** for Qwen3.5-2B. Robustness varies with model scale and family.
 
@@ -119,7 +123,9 @@ Selected results from **Table 1** of the paper. Values are accuracy (%).
 
 ![Thinking versus Non-Thinking performance](assets/figures/thinking-ablation.png)
 
-*Figure 7, paper p. 8.*
+<p align="center">
+  <em>Figure 5: Thinking improves planning</em>
+</p>
 
 Across ten models, Thinking brings average gains of **31.1 percentage points in Multi-Step Planning**, compared with 19.4 in Temporal Reasoning and 15.2 in Spatial Cognition. All ten improve overall accuracy, with longer inference time.
 
