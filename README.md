@@ -211,12 +211,3 @@ Across ten models, Thinking brings average gains of **31.1 percentage points in 
 - Juntong Feng: <2253762636@mail.dlut.edu.cn>
 - Qing'an Liu: <2223884741@mail.dlut.edu.cn>
 
-## Citation
-
-To be added.
-
----
-
-## License
-
-To be added.
