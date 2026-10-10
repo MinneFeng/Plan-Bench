@@ -4,7 +4,7 @@
   <img src="assets/figures/motivation.pdf" width="980" alt="Plan-Bench motivation">
 </p>
 <p align="center">
-  <strong>Do VLMs really understand visualized text as well as pure text?</strong><br/>
+  <strong>Can existing VLMs go well beyond perception to reason and plan in embodied worlds?</strong><br/>
   A systematic benchmark spanning <em>multimodal perception → reasoning → unimodal knowledge</em>.
 </p>
 
@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  <em>Figure 1: Motivation of VISTA-Bench.</em>
+  <em>Figure 1: Motivation of Plan-Bench.</em>
 </p>
 
 ## Overview
