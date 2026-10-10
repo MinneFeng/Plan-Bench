@@ -4,9 +4,9 @@
 
 ### Can Existing VLMs Go Well Beyond Perception to Reason and Plan in Embodied Worlds?
 
-**699 Samples · 16 Subtasks · 3 Dimensions · 28 Evaluated VLMs**
+**699 Samples · 16 Subtasks · 3 Dimensions**
 
-[Paper](paper/plan-bench.pdf) · [Benchmark](#benchmark) · [Results](#results) · [Experimental Analysis](#experimental-analysis) · [Citation](#citation)
+[Paper](paper/plan-bench.pdf) · [Benchmark](#benchmark) · [Main Results](#main-results) · [Experimental Analysis](#experimental-analysis) · [Citation](#citation)
 
 </div>
 
@@ -30,6 +30,9 @@ We introduce **Plan-Bench**, a systematic benchmark for evaluating the **high-le
 
 The dataset contains **183 single-choice** and **516 open-ended** questions, with **1–16 images per sample**. It combines controlled generation and existing datasets; 699 samples are retained from 2,580 candidates through independent review by three annotators.
 
+<details>
+<summary><strong>Dataset figures</strong></summary>
+  
 ![Representative samples across all 16 subtasks](assets/figures/tasks.png)
 
 <p align="center">
@@ -38,16 +41,68 @@ The dataset contains **183 single-choice** and **516 open-ended** questions, wit
 
 </details>
 
+
+## Repository structure
+
+```text
+VISTA-Bench/
+├─ assets/figures/    # figures used in this README
+├─ images/            # images in Plan-Bench
+├─ VLMEvalKit/        # evaluation toolkit
+└─ questions.tsv      # dataset index
+```
+
+> **Note:** `VISTA-Bench.tsv` and `VISTA-Bench-VT.tsv` are currently identical; we keep both filenames for compatibility and will refine the organization later.
+
+
 ## Evaluation
 
-VLMs receive images and a question, and return an option letter or a structured answer. **DeepSeek-V4-Flash** judges answer correctness using a reference answer and optional equivalence hints. **Hints are visible only to the judge.** Accuracy is reported per dimension and overall; human verification found agreement on all 200 sampled responses.
+We evaluate Plan-Bench with `VLMEvalKit/`.  
+Before running evaluation, we recommend converting the TSV file(s) into a normalized format with absolute image paths.
 
-Open-weight models are evaluated with **VLMEvalKit** on NVIDIA A800 GPUs in BF16; commercial models use API interfaces. Prompts and model configurations are provided in Appendix B.
+### 1) Convert TSV to normalized paths
 
+Helper script:
+- `VLMEvalKit/utils/convert_data_file.py`
 
-<!-- Add tested installation, dataset access, and evaluation commands once release paths are verified. -->
+What it does:
+- converts the TSV encoding to UTF-8
+- normalizes path separators (`\` → `/`)
+- renames `options_A/B/C/D` → `A/B/C/D` when needed
 
-## Results
+Example:
+
+```bash
+python VLMEvalKit/utils/convert_data_file.py \
+  --in   Plan-Bench/Plan-Bench.tsv \
+  --out  Plan-Bench/Plan_norm.tsv \
+  --image-prefix /ABS/PATH/TO/Plan-Bench \
+```
+
+- `--in`: input TSV path (the original dataset TSV to be converted)
+- `--out`: output TSV path (the converted/normalized TSV produced by this script)
+- `--image-prefix`: the dataset root directory where images/, questions/, and the TSV files are located (used to resolve relative paths)
+
+After conversion, rename the TSV column header `image` to `image-1` to avoid an AssertionError in some VLMEvalKit setups.
+
+### 2) Run evaluation
+
+**Pure-text:**
+```bash
+python /VLMEvalKit/run.py \
+  --data Plan-Bench\
+  --model Qwen3.5-2B \
+  --verbose
+```
+
+- `--data`: the dataset name corresponding to your converted TSV (e.g., `Plan-Bench`) and can be run directly using this name because it is registered in `VLMEvalKit/vlmeval/dataset/image_mixedqa.py` via `DATASET_URL/MD5`.
+- `--model`: the model name defined in `VLMEvalKit/vlmeval/config.py` (make sure the corresponding weights are available in your environment).
+- `--verbose`: print detailed logs during evaluation.
+- Outputs: the final report includes `overall` results and `l1-categories` breakdown.
+
+  
+
+## Main Results
 
 Selected results from **Table 1** of the paper. Values are accuracy (%).
 
@@ -101,7 +156,11 @@ Selected results from **Table 1** of the paper. Values are accuracy (%).
 
 ### Task-specific weaknesses
 
-![Subtask accuracy of eight representative VLMs](assets/figures/subtask-performance.png)
+<p align="center">
+  <img src="assets/figures/subtask-performance.png"
+       width="800"
+       alt="Subtask accuracy of eight representative VLMs">
+</p>
 
 <p align="center">
   <em>Figure 3: Task-specific weaknesses</em>
@@ -111,7 +170,11 @@ Selected results from **Table 1** of the paper. Values are accuracy (%).
 
 ### Robustness to misleading views
 
-![Accuracy with additional misleading viewpoints](assets/figures/misleading-views.png)
+<p align="center">
+  <img src="assets/figures/misleading-views.png"
+       width="600"
+       alt="Accuracy with additional misleading viewpoints">
+</p>
 
 <p align="center">
   <em>Figure 4: Robustness to misleading views</em>
@@ -121,7 +184,11 @@ Selected results from **Table 1** of the paper. Values are accuracy (%).
 
 ### Thinking improves planning
 
-![Thinking versus Non-Thinking performance](assets/figures/thinking-ablation.png)
+<p align="center">
+  <img src="assets/figures/thinking-ablation.png"
+       width="800"
+       alt="Thinking versus Non-Thinking performance">
+</p>
 
 <p align="center">
   <em>Figure 5: Thinking improves planning</em>
@@ -130,17 +197,17 @@ Selected results from **Table 1** of the paper. Values are accuracy (%).
 Across ten models, Thinking brings average gains of **31.1 percentage points in Multi-Step Planning**, compared with 19.4 in Temporal Reasoning and 15.2 in Spatial Cognition. All ten improve overall accuracy, with longer inference time.
 
 
+## Contact
+
+- Juntong Feng: <2253762636@mail.dlut.edu.cn>
+- Qing'an Liu: <2223884741@mail.dlut.edu.cn>
+
 ## Citation
 
-The supplied manuscript is anonymous and under review at ICLR 2027. Update this entry when public publication metadata is available.
+To be added.
 
-```bibtex
-@misc{planbench2026,
-  title  = {{Plan-Bench}: Can Existing {VLMs} Go Well Beyond Perception to Reason and Plan in Embodied Worlds?},
-  author = {{Anonymous}},
-  year   = {2026},
-  note   = {Anonymous manuscript under review as a conference paper at ICLR 2027}
-}
-```
+---
 
-All figures are cropped directly from the [paper](paper/figures/plan-bench.pdf); extraction details are recorded in [assets/SOURCES.json](assets/SOURCES.json).
+## License
+
+To be added.
