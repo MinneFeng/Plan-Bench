@@ -12,7 +12,7 @@
 
 <!-- Add verified code and dataset URLs when available. -->
 
-![Plan-Bench overview](assets/overview.png)
+![Plan-Bench overview](assets/figures/overview.png)
 
 *Figure 1, paper p. 2.*
 
@@ -51,11 +51,11 @@ The dataset contains **183 single-choice** and **516 open-ended** questions, wit
 | Multi-Step Planning | Route Planning | 10 | 40 |
 | **Total** |  | **183** | **516** |
 
-![Representative samples across all 16 subtasks](assets/tasks.png)
+![Representative samples across all 16 subtasks](assets/figures/tasks.png)
 
 *Figure 3, paper p. 4; question counts from Table 2.*
 
-![Dataset construction pipeline](assets/construction.png)
+![Dataset construction pipeline](assets/figures/construction.png)
 
 *Figure 2, paper p. 3.*
 
@@ -70,7 +70,7 @@ Open-weight models are evaluated with **VLMEvalKit** on NVIDIA A800 GPUs in BF16
 <details>
 <summary><strong>Answer-equivalence examples</strong></summary>
 
-![Examples of equivalent valid answers](assets/answer-hints.png)
+![Examples of equivalent valid answers](assets/figures/answer-hints.png)
 
 *Figure 10, paper p. 20.*
 
@@ -132,7 +132,7 @@ Selected results from **Table 1** of the paper. Values are accuracy (%).
 
 ### Task-specific weaknesses
 
-![Subtask accuracy of eight representative VLMs](assets/subtask-performance.png)
+![Subtask accuracy of eight representative VLMs](assets/figures/subtask-performance.png)
 
 *Figure 4, paper p. 7.*
 
@@ -140,7 +140,7 @@ Selected results from **Table 1** of the paper. Values are accuracy (%).
 
 ### Robustness to misleading views
 
-![Accuracy with additional misleading viewpoints](assets/misleading-views.png)
+![Accuracy with additional misleading viewpoints](assets/figures/misleading-views.png)
 
 *Figure 5, paper p. 8.*
 
@@ -148,7 +148,7 @@ Selected results from **Table 1** of the paper. Values are accuracy (%).
 
 ### Thinking improves planning
 
-![Thinking versus Non-Thinking performance](assets/thinking-ablation.png)
+![Thinking versus Non-Thinking performance](assets/figures/thinking-ablation.png)
 
 *Figure 7, paper p. 8.*
 
@@ -157,13 +157,13 @@ Across ten models, Thinking brings average gains of **31.1 percentage points in 
 <details>
 <summary><strong>Navigation, manipulation, and failure cases</strong></summary>
 
-![Navigation and manipulation task-group accuracy](assets/navigation-manipulation.png)
+![Navigation and manipulation task-group accuracy](assets/figures/navigation-manipulation.png)
 
 *Figure 6, paper p. 8.*
 
 Task-group strengths differ: Qwen3.8-27B achieves **69.3% on manipulation-related tasks versus 54.6% on navigation-related tasks**. These scores assess high-level decisions rather than robot execution.
 
-![Representative hallucination failures](assets/hallucination-cases.png)
+![Representative hallucination failures](assets/figures/hallucination-cases.png)
 
 *Figure 8, paper p. 9.*
 
@@ -184,4 +184,4 @@ The supplied manuscript is anonymous and under review at ICLR 2027. Update this 
 }
 ```
 
-All figures are cropped directly from the [paper](paper/plan-bench.pdf); extraction details are recorded in [assets/SOURCES.json](assets/SOURCES.json).
+All figures are cropped directly from the [paper](paper/figures/plan-bench.pdf); extraction details are recorded in [assets/SOURCES.json](assets/SOURCES.json).
